@@ -13,7 +13,7 @@ var urlRegex= "";
     	alertMsg = alertMsg.substring(0,27) + "...";
     }
     */
-   	$.titleAlert("New ping from " + from, {
+   	$.titleAlert("Message from " + from, {
 	    requireBlur:false,
 	    stopOnFocus:true,
 	    stopOnMouseMove:true,

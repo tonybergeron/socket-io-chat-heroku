@@ -1,21 +1,28 @@
 @import 'nib'
 
+body, html
+  height 98%
+  width 99%
+
 #chat, #nickname, #messages
-  width 600px
+  //width 600px
 
 #chat
   position relative
   border 1px solid #ccc
+  height 100%
 
 #nickname, #connecting
   position absolute
-  height 410px
+  //height 410px
+  height 100%
+  width 100%
   z-index 100
   left 0
   top 0
   background #fff
   text-align center
-  width 600px
+  //width 600px
   font 15px Georgia
   color #666
   display block
@@ -43,7 +50,8 @@
     display none
 
 #messages
-  height 380px
+  //height 380px
+  height 90%
   background #eee
   em
     text-shadow 0 1px 0 #fff
@@ -73,7 +81,7 @@
       border-radius 10px
       text-shadow 0 1px 0 #666
   #lines
-    height 355px
+    //height 355px
     overflow auto
     overflow-x hidden
     overflow-y auto
@@ -106,7 +114,7 @@
     padding 0 10px
     line-height 30px
     vertical-align middle
-    width 580px
+    width 90%
     &:focus
       outline 0
   button
