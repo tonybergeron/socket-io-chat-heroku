@@ -3,7 +3,9 @@ html
   head
     link(href='/stylesheets/style.css', rel='stylesheet')
     script(src='http://code.jquery.com/jquery-1.6.1.min.js')
+    script(src='/js/jquery.titlealert.js')
     script(src='/socket.io/socket.io.js')
+    script(src='/js/messages.js')
     script
       // socket.io specific code
       var socket = io.connect();
@@ -37,21 +39,7 @@ html
         message('System', e ? e : 'A unknown error occurred');
       });
 
-      function message (from, msg) {
-        var words = "";
-        var send = "";
-        words = msg.split(' ');
-        $.each(words, function() {
-          var word = this;
-          if(word.match(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)) {
-            word = '<a ref="' + word + '" target="_blank">' + word + '</a>'; 
-          }
-          send += word + ' ';
-        });
-
-        
-        $('#lines').append($('<p>').append($('<b>').text(from), send));
-      }
+      
 
       // dom manipulation
       $(function () {
@@ -91,5 +79,5 @@ html
         #nicknames
         #lines
       form#send-message
-        input#message
+        input#message(autocomplete="off")
         button Send
