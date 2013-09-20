@@ -63,9 +63,9 @@ var io = sio.listen(app)
 */
 
 io.configure(function() {
-  io.set('close timeout', 40);
-  io.set('heartbeat timeout', 30);
-  io.set('heartbeat interval', 35);
+  io.set('close timeout', 60);
+  io.set('heartbeat timeout', 51);
+  io.set('heartbeat interval', 25);
   io.set('transports', [
     'websocket', 'htmlfile', 'jsonp-polling', 'xhr-polling'
   ]);
