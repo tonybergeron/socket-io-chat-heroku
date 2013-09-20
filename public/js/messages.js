@@ -3,10 +3,16 @@ var urlRegex = "";
 function message(from, msg) {
   var message = msg.replace(/(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/gi, "<a href='$&' target='_blank'>$&</a>");
 
-  $('#lines').append($('<p>').append($('<b>').text(from), message))
-    .animate({
-      "scrollTop": $('#lines')[0].scrollHeight
-    }, "fast");
+  $('#lines').append($('<p>').append($('<b>').text(from), message));
+
+  //If the user is not in the new chat area, dont scroll automatically
+  if (($('#lines').scrollTop()+355) > ($('#lines')[0].scrollHeight-80)) {
+    $('#lines').animate({
+        "scrollTop": $('#lines')[0].scrollHeight
+      },
+      "fast");
+  }
+
 
 
   //Scroll to the bottom automatically on new message
