@@ -56,10 +56,22 @@ var io = sio.listen(app)
   , nicknames = {};
 
 // Set our transports
-io.configure(function () { 
+/*io.configure(function () { 
   io.set("transports", ["xhr-polling"]); 
   io.set("polling duration", 20); 
 });
+*/
+
+io.configure(function() {
+  io.set('close timeout', 40);
+  io.set('heartbeat timeout', 30);
+  io.set('heartbeat interval', 35);
+  io.set('transports', [
+    'websocket', 'htmlfile', 'jsonp-polling', 'xhr-polling'
+  ]);
+});
+
+
 
 io.sockets.on('connection', function (socket) {
   socket.on('user message', function (msg) {

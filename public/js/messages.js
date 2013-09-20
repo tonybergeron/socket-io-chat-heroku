@@ -5,29 +5,25 @@ function message(from, msg) {
 
   $('#lines').append($('<p>').append($('<b>').text(from), message));
 
+  autoScroll(); //proc AutoScroll
+
+  titleAlert(from);
+
+}
+
+//Scrolls the user if they are at the bottom of the chat
+function autoScroll() {
   //If the user is not in the new chat area, dont scroll automatically
-  if (($('#lines').scrollTop()+355) > ($('#lines')[0].scrollHeight-80)) {
+  if (($('#lines').scrollTop() + 355) > ($('#lines')[0].scrollHeight - 80)) {
     $('#lines').animate({
         "scrollTop": $('#lines')[0].scrollHeight
       },
       "fast");
   }
+}
 
-
-
-  //Scroll to the bottom automatically on new message
-  //$("#lines").animate({ scrollTop: $('#lines').height()}, 1000);
-  //$('#lines').scrollTop($('#lines').height())
-
-
-  //Truncate for the Alert
-  /*var alertMsg = from + ": " + msg;
-    if(alertMsg.length < 30) {
-
-    } else {
-    	alertMsg = alertMsg.substring(0,27) + "...";
-    }
-    */
+//Activates the Title alert
+function titleAlert(from) {
   $.titleAlert("Message from " + from, {
     requireBlur: false,
     stopOnFocus: true,
