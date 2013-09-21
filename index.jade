@@ -60,7 +60,7 @@ html
 
         $('#send-message').submit(function () {
           //Validate message submitted
-          if($.trim( $('#message').val() )  > 0 && !spamTimeout) {
+          if($.trim( $('#message').val() )  > 0 && spamTimeout) {
             message('me', $('#message').val());
             socket.emit('user message', $('#message').val());
             clear();
@@ -71,6 +71,12 @@ html
             
             //$('#lines').get(0).scrollTop = 10000000;
           }
+
+          //Spam message
+          if(!spamTimeout) {
+            message('DEVTONY', "<em>Don't spam the chat!</em>");
+          }
+
           return false;
         });
 
