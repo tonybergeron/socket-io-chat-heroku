@@ -42,6 +42,8 @@ html
       });
 
       
+      //Message vars
+      var spamTimeout = true;
 
       // dom manipulation
       $(function () {
@@ -57,11 +59,16 @@ html
         });
 
         $('#send-message').submit(function () {
-          //validate message
-          if($.trim( $('#message').val() )  > 0 ) {
+          //Validate message submitted
+          if($.trim( $('#message').val() )  > 0 && !spamTimeout) {
             message('me', $('#message').val());
             socket.emit('user message', $('#message').val());
             clear();
+
+            //Timeout 
+            spamTimeout == false;
+            setTimeout(function() { spamTimeout == true }, 300);
+            
             //$('#lines').get(0).scrollTop = 10000000;
           }
           return false;
