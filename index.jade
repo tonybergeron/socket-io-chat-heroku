@@ -17,6 +17,7 @@ html
 
       socket.on('announcement', function (msg) {
         $('#lines').append($('<p>').append($('<em>').text(msg)));
+        autoScroll();
       });
 
       socket.on('nicknames', function (nicknames) {
@@ -26,7 +27,7 @@ html
         }
       });
 
-      socket.on('user message', message);
+      socket.on('user message', message);  //run message on incoming messages
       socket.on('reconnect', function () {
         $('#lines').remove();
         message('System', 'Reconnected to the server');
@@ -56,10 +57,13 @@ html
         });
 
         $('#send-message').submit(function () {
-          message('me', $('#message').val());
-          socket.emit('user message', $('#message').val());
-          clear();
-          $('#lines').get(0).scrollTop = 10000000;
+          //validate message
+          if($.trim( $('#message').val() )  > 0 ) {
+            message('me', $('#message').val());
+            socket.emit('user message', $('#message').val());
+            clear();
+            //$('#lines').get(0).scrollTop = 10000000;
+          }
           return false;
         });
 
