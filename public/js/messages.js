@@ -18,7 +18,7 @@ function autoScroll() {
     $('#lines').animate({
         "scrollTop": $('#lines')[0].scrollHeight
       },
-      500);
+      300);
   }
 }
 

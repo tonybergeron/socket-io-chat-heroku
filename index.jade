@@ -43,7 +43,7 @@ html
 
       
       //Message vars
-      var spamTimeout = true;
+      var notSpam = true;
 
       // dom manipulation
       $(function () {
@@ -58,31 +58,39 @@ html
           return false;
         });
 
+        //Send the message!
         $('#send-message').submit(function () {
+          //Spam Prevention
+          if(!notSpam) {
+            message('DEVTONY', "<em>Don't spam the chat!</em>");
+          }
+
           //Validate message submitted
-          if($.trim($('#message').val()).length  > 0 && spamTimeout) {
+          else if($.trim($('#message').val()).length  > 0 && notSpam) {
             message('me', $('#message').val());
             socket.emit('user message', $('#message').val());
             clear();
 
             //Timeout 
-            spamTimeout == false;
-            setTimeout(function() { spamTimeout == true }, 300);
+            spamTimeout(notSpam);
             
             //$('#lines').get(0).scrollTop = 10000000;
-          }
-
-          //Spam message
-          if(!spamTimeout) {
-            message('DEVTONY', "<em>Don't spam the chat!</em>");
           }
 
           return false;
         });
 
+        //Clear the users input and focus
         function clear () {
           $('#message').val('').focus();
         };
+
+        //Handle the Spam Timeout
+        function spamTimeout() {
+          notSpam = false;
+          setTimeout(function() { notSpam = true }, 300);
+        };
+
       });
   body
     #chat
