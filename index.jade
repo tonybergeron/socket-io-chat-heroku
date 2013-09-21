@@ -60,7 +60,7 @@ html
 
         $('#send-message').submit(function () {
           //Validate message submitted
-          if($.trim( $('#message').val() )  > 0 && spamTimeout) {
+          if($.trim($('#message').val()).length  > 0 && spamTimeout) {
             message('me', $('#message').val());
             socket.emit('user message', $('#message').val());
             clear();
