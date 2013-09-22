@@ -32,3 +32,11 @@ function titleAlert(from) {
     interval: 1000
   });
 }
+
+//Onload
+$(function () {
+  //Timout reload
+  $('#reload').click(function() {
+      location.reload();
+  });
+});

@@ -5,7 +5,9 @@ body {
 }
 #chat,
 #nickname,
-#messages {
+#messages,
+#connecting,
+#timeout {
   width: 100%;
   min-width: 600px;
 }
@@ -13,7 +15,8 @@ body {
   position: relative;
 }
 #nickname,
-#connecting {
+#connecting,
+#timeout {
   position: absolute;
   height: 410px;
   z-index: 100;
@@ -26,7 +29,8 @@ body {
   display: block;
 }
 #nickname .wrap,
-#connecting .wrap {
+#connecting .wrap,
+#timeout .wrap {
   padding-top: 150px;
 }
 #nickname input {
@@ -42,11 +46,22 @@ body {
   font-size: 12px;
   visibility: hidden;
 }
+#timeout {
+  display: none;
+}
+#timeout #reload {
+  font-weight: bold;
+  color: #00f;
+  cursor: pointer;
+}
 .connected #connecting {
   display: none;
 }
 .nickname-set #nickname {
   display: none;
+}
+.timeout #timeout {
+  display: block;
 }
 #messages {
   background: #eee;

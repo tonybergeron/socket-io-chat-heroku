@@ -4,7 +4,7 @@ html, body
   height 100%
   margin 0
 
-#chat, #nickname, #messages, #connecting
+#chat, #nickname, #messages, #connecting, #timeout
   width 100%
   min-width: 600px
   //border 1px solid #ccc
@@ -13,7 +13,7 @@ html, body
   position relative
   //border 1px solid #ccc
 
-#nickname, #connecting
+#nickname, #connecting, #timeout
   position absolute
   height 410px
   z-index 100
@@ -40,6 +40,14 @@ html, body
     font-size 12px
     visibility hidden
 
+#timeout
+  display none
+  #reload
+    font-weight bold
+    color #0000FF
+    cursor pointer
+
+
 .connected
   #connecting
     display none
@@ -47,6 +55,11 @@ html, body
 .nickname-set
   #nickname
     display none
+
+.timeout
+  #timeout
+    display block
+
 
 #messages
   //height 380px
