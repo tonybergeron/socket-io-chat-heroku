@@ -5,9 +5,9 @@ function message(from, msg) {
 
   $('#lines').append($('<p>').append($('<b>').text(from), message));
 
-  autoScroll(); //proc AutoScroll
-
   titleAlert(from);
+
+  autoScroll(); //proc AutoScroll
 
 }
 
@@ -18,7 +18,7 @@ function autoScroll() {
     $('#lines').animate({
         "scrollTop": $('#lines')[0].scrollHeight
       },
-      300);
+      1000);
   }
 }
 
